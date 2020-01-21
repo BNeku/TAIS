@@ -67,8 +67,8 @@ pair<int,int> bombilla(const vector<bombillas> v, const int &Pmax, const int &Pm
 		}
 	}
 
-	int costeMin = tabla[n-1][Pmax];
-	int p = Pmax;
+	int costeMin = tabla[n-1][Pmin];
+	int p = Pmin;
 
 	for (int i = Pmin; i<=Pmax; i++){
 		if (costeMin > tabla[n - 1][i]){
