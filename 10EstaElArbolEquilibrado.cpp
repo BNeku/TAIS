@@ -22,6 +22,8 @@ bool esEquilibrado(const bintree<T> &arbol, int &h){
 		bool izquierda = esEquilibrado(arbol.left(), hIzq);
 		bool derecha = esEquilibrado(arbol.right(), hDcha);
 		
+		//en vez de sumar la altura en la que profundizamos en el arbol, lo hacemos al reves, cuando volvemos a la raiz, de forma que tengamos
+		//las altura de ambas ramas en el nodo raiz
 		h = 1+max(hDcha, hIzq);
 		
 		//solo queremos saber la diferencia de las ramas una vez hayamos explorado todo el arbol
