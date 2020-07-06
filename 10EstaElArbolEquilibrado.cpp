@@ -16,12 +16,15 @@ bool esEquilibrado(const bintree<T> &arbol, int &h){
 	}
 	else{
 		int hDcha, hIzq;
-
+		
+		//no comprobamos si la rama esta vacia porque necesitamos que la propia recursion nos lo diga
+		//los boleanos los utilizamos para saber cuando hemos llegado al final de la rama
 		bool izquierda = esEquilibrado(arbol.left(), hIzq);
 		bool derecha = esEquilibrado(arbol.right(), hDcha);
 		
 		h = 1+max(hDcha, hIzq);
 		
+		//solo queremos saber la diferencia de las ramas una vez hayamos explorado todo el arbol
 		if (abs(hIzq - hDcha) <= 1 && izquierda && derecha){
 			return true;
 		}
