@@ -12,10 +12,6 @@ long long int minEsfuerzo(PriorityQueue<long long int> &suma){
 
 	long long int num1, num2;
 
-	if (suma.size() == 1){
-		return 0;
-	}
-
 	while (suma.size() > 1){
 		suma.pop(num1);
 		suma.pop(num2);
