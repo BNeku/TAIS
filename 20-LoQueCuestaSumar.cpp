@@ -6,7 +6,7 @@
 
 using namespace std;
 
-
+//SI CAMBIAMOS LOS INT POR LONG LONG INT, NO OLVIDAR CAMBIAR TAMBIEN EL TIPO DE LA FUNCION A LONG LONG
 long long int minEsfuerzo(PriorityQueue<long long int> &suma){
 	long long int esfuerzo=0;
 
