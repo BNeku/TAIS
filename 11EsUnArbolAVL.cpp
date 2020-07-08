@@ -32,6 +32,8 @@ bool esEquilibrado(const bintree<T> &arbol, int &h){
 	}
 }
 
+
+//la idea es comprobar que se cumple en cada iteracion la condicion a la vez que vamos cogiendo el maximo de la izquierda y minimo de la derecha
 template <class T>
 bool esAVL(const bintree<T> &arbol, bool &AVL, int &min, int &maxim){
 
@@ -42,16 +44,19 @@ bool esAVL(const bintree<T> &arbol, bool &AVL, int &min, int &maxim){
 		}
 		else{
 			int aux = -1;
-
+			//exploramos primero la rama izquierda si tiene
 			if (!arbol.left().empty()){
 				esAVL(arbol.left(), AVL, min, maxim);
-
+				//llegamos aqui cuando hemos llegado al ultimo nodo de la izquierda sin hijos
+				//comprobamos que se cumple la condicion
 				if (maxim >= arbol.root()){
 					AVL = false;
 				}
 				else{
+					//si se cumple, entonces la raiz es mas grande que maximo, lo actualizamos
 					maxim = arbol.root();
 				}
+				//guardamos el minimo para no perderlo al explorar la rama derecha
 				aux = min;
 			}
 			
@@ -65,6 +70,7 @@ bool esAVL(const bintree<T> &arbol, bool &AVL, int &min, int &maxim){
 					min = aux;
 				}
 				else{
+					//solo pasa en caso de que no haya ninguna rama izquierda
 					min = arbol.root();
 				}
 			}
