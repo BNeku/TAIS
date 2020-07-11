@@ -53,7 +53,7 @@ int cajaIsmael(PriorityQueue<caja> &cola, int C){
 }
 
 // resuelve un caso de prueba, leyendo de la entrada la
-// configuración, y escribiendo la respuesta
+// configuraciÃ³n, y escribiendo la respuesta
 bool resuelveCaso() {
 	int N, C;
 	//N numero de cajas abiertas, C numero de clientes esperando
@@ -79,7 +79,7 @@ bool resuelveCaso() {
 int main() {
 	// ajustes para que cin extraiga directamente de un fichero
 #ifndef DOMJUDGE
-	std::ifstream in("casos.txt");
+	std::ifstream in("casos23.txt");
 	auto cinbuf = std::cin.rdbuf(in.rdbuf());
 #endif
 
