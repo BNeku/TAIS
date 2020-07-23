@@ -1,4 +1,4 @@
-//Nerea Jiménez González
+//Nerea JimÃ©nez GonzÃ¡lez
 
 #include <iostream>
 #include <fstream>
@@ -6,7 +6,7 @@
 
 using namespace std;
 
-//coste lineal en el número de agujeros, O(n) donde n es el número de agujeros
+//coste lineal en el nÃºmero de agujeros, O(n) donde n es el nÃºmero de agujeros
 int resolver(const vector<int> &v, const int &L){
 	//estrategia: recorrer los agujeros de izqda a dcha colocando parches
 	//colocamos un parche y nos movemos hasta el siguiente agujero no cubierto
@@ -23,6 +23,23 @@ int resolver(const vector<int> &v, const int &L){
 
 	return nParches;
 }
+
+/*
+//OTRA FORMA
+int parches(const vector<int>  agujeros, const int L){
+	int posFinal = 0;
+	int numParches = 0;
+
+	for (int i = 0; i < agujeros.size(); i++){
+		if (posFinal < agujeros[i]){
+			posFinal = agujeros[i] + L;
+			numParches++;
+		}
+	}
+
+	return numParches;
+}
+*/
 
 bool resuelveCaso() {
 	int N;//numero de agujeros
