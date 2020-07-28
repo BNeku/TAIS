@@ -8,7 +8,7 @@
 
 using namespace std;
 
-//coste nlog n, ya que es el coste del sort y es el coste más alto, O(nlogn) donde n es el número de partidos adivinados
+//coste nlog n, ya que es el coste del sort y es el coste mÃ¡s alto, O(nlogn) donde n es el nÃºmero de partidos adivinados
 int maximizar(vector<int> &rivales, vector<int> &boston){
 	int exito = 0;
 	bool pierden = false;
@@ -27,6 +27,27 @@ int maximizar(vector<int> &rivales, vector<int> &boston){
 
 	return exito;
 }
+
+/*
+con priority queue
+
+int puntos(PriorityQueue<int, less<int>> rivales, PriorityQueue<int, greater<int>> broncos){
+	int puntos = 0;
+	int N = rivales.size();
+	int r, b;
+
+	for (int i = 0; i < N; i++){
+		r = rivales.top(); rivales.pop();
+		b = broncos.top(); broncos.pop();
+		if (b - r > 0){
+			puntos += b - r;
+		}
+	}
+
+
+	return puntos;
+}
+*/
 
 bool resuelveCaso() {
 	int n;//numero de puntos
