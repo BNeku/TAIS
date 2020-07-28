@@ -7,7 +7,7 @@
 
 using namespace std;
 
-//coste n log n debido al sort para ordenar el vector, O(nlogn) donde n es el número de esquiadores y esquis
+//coste n log n debido al sort para ordenar el vector, O(nlogn) donde n es el nÃºmero de esquiadores y esquis
 int sumaDiferencias(vector<int> &esquiadores, vector<int> &esquis){
 	int suma = 0;
 
@@ -21,8 +21,28 @@ int sumaDiferencias(vector<int> &esquiadores, vector<int> &esquis){
 	return suma;
 }
 
+/*
+usando priority queue en vez vector
+
+int diferencia(PriorityQueue<int> alturas, PriorityQueue<int> esquis){
+	int suma = 0;
+	int N = alturas.size();
+	int e, a;
+
+	for (int i = 0; i < N; i++){
+		a = alturas.top(); alturas.pop();
+		e = esquis.top(); esquis.pop();
+
+		suma += abs(a - e);
+	}
+
+	return suma;
+}
+
+*/
+
 // resuelve un caso de prueba, leyendo de la entrada la
-// configuración, y escribiendo la respuesta
+// configuraciÃ³n, y escribiendo la respuesta
 bool resuelveCaso() {
 	int N;//numero de esquiadores y esquis a emparejar
 	cin >> N;
