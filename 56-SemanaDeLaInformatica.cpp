@@ -14,7 +14,7 @@ struct actividades{
 bool operator < (actividades const &a1, actividades const &a2){
 	return a1.ini < a2.ini;
 }
-/*necesitamos dos colas de prioridades, una que esté ordenada con los eventos que comienzan antes, y otra donde se vayan guardando 
+/*necesitamos dos colas de prioridades, una que estÃ© ordenada con los eventos que comienzan antes, y otra donde se vayan guardando 
 los finales donde haya ayudantes asistiendo*/
 int ayudantes(PriorityQueue<actividades> &act){
 	int ayud = 0;
@@ -41,6 +41,31 @@ int ayudantes(PriorityQueue<actividades> &act){
 
 	return ayud;
 }
+
+/*
+//otra version
+int amigos(PriorityQueue<actividad> &horario){
+	int numAmigos = 0;
+	PriorityQueue<int> finActividades;
+	finActividades.push(horario.top().fin);
+	int N = horario.size() - 1;
+	horario.pop();
+
+	for (int i = 0; i < N; i++){
+		if (finActividades.top() > horario.top().ini){
+			numAmigos++;
+		}
+		else{
+			finActividades.pop();
+		}
+		finActividades.push(horario.top().fin);
+		horario.pop();
+	}
+
+	return numAmigos;
+}
+
+*/
 
 bool resuelveCaso() {
 	int nActividades;
