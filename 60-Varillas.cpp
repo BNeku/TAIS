@@ -1,4 +1,4 @@
-//Nerea JimÈnez Gonz·lez
+//Nerea Jim√©nez Gonz√°lez
 
 #include <iostream>
 #include <fstream>
@@ -17,7 +17,9 @@ typedef struct varilla{
 	int coste;
 };
 
-/*4.			 _____
+//Coste de todas las funciones es la misma, Coste O(N*L)
+
+/*4.			 	  _____
 				| minCoste(i - 1, j) li>j
  minVar(i, j) = { min(minCoste(i - 1, j - li)+Ci, minCoste(i - 1, j)) //igual que 3 pero sumando el coste
 				| _____
@@ -50,7 +52,7 @@ int minCoste(vector<varilla> &varillas, const int &L){
 }
 
 
-/*3.			 _____
+/*3.			 	  _____
 				| minVar(i - 1, j) li>j
  minVar(i, j) = { min(minVar(i - 1, j - li)+1, minVar(i - 1, j)) //nos quedamos con el minimo entre poner la varilla i o no ponerla
 				| _____
@@ -83,16 +85,16 @@ int minVar(vector<varilla> &varillas, const int &L){
 	return numMin[n][L];
 }
 
-/*2.			_____
+/*2.			    _____
 			   | formas(i-1, j)  li>j
- formas(i,j) = { formas(i-1, j-li) //numero de formas en las que est· implicada i   li <=j
-			   | + formas(i-1, j) //numero de formas en las que no est· implicada i
+ formas(i,j) = { formas(i-1, j-li) //numero de formas en las que est√° implicada i   li <=j
+			   | + formas(i-1, j) //numero de formas en las que no est√° implicada i
 			   |_____
  casos base:
  formas(i,0) = 1 //cuando la longitud es 0 solo hay 1 forma
  formas(0, j) = 0 //cuando no tengo varillas, no tengo formas (j>0)
 
- //una vez tenemos la primera recursiÛn, la forma de pensar es similar para el resto de apartados
+ //una vez tenemos la primera recursi√≥n, la forma de pensar es similar para el resto de apartados
 */
 int formas(vector<varilla> &varillas, const int &L){
 	int n = varillas.size() - 1;
@@ -117,10 +119,10 @@ int formas(vector<varilla> &varillas, const int &L){
 	return numFormas[n][L];
 }
 
-/* 1.			 ____
+/* 1.			 	 ____
 				|  sePuede(i-1, j)  li > j
  sePuede(i,j) = {  sePuede(i-1, j-li) //se puede con la i, por lo que seguimos con la longitud j menos la longitud de i (li)
-				|  Û								li<=j
+				|  √≥								li<=j
 				|  sePuede(i-1, j) //se puede con todas menos con la i
 				|____
  casos base:
