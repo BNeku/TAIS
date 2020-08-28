@@ -16,10 +16,10 @@ maxComida(i,j) = maximo de comida a comer del cubo i al cubo j
 				
 maxComida(i,j) = max(elegirDcha, elegirIzqda) //vemos las dos opciones para saber cual es mejor
 
-elegirDcha = maxComida(i+1,j-1)+comida[i] si comida[j] > comida[i+1]
+elegirIzqda = maxComida(i+1,j-1)+comida[i] si comida[j] > comida[i+1]
 			 maxComida(i+2,j)+comida[i] e.o.c
 
-elegirIzqda = maxComida(i+1,j-1)+comida[j] si comida[j-1] > comida[i]
+elegirDcha = maxComida(i+1,j-1)+comida[j] si comida[j-1] > comida[i]
 			  maxComida(i,j-2)+comida[j] e.o.c
 
 Casos Base:
