@@ -1,24 +1,20 @@
-//Nerea Jiménez González
-//30/40 no está bien la reconstruccion de la palabra
+//Nerea Jim�nez Gonz�lez
+
 
 #include <iostream>
 #include <fstream>
+#include <vector>
 #include <string>
 #include <algorithm>
 #include "Matriz.h"
 
 using namespace std;
 
-
-/*tabla(i,j)= minimo numero de letras a añadir para alcanzar la palbra j y esta sea un palindromo
-tabla(i,j)=tabla(i+1,j-1) si palabra[i]==palabra[j]
-tabla(i,j)==min(tabla(i+1,j), tabla(i,j-1) si palabra[i]!=palabra[j]
-CB:
-tabla(i,j)=0 si i==j
-El coste es O(n*n) en tiempo y en espacio, donde n es el numero de letras de la palabra
+/*
+				 palindromo(i-1,j-1)+1 si i!=j
+palindromo(i,j)= min(palindromo(i-1,j), palindromo(i,j-1) e.o.c
 */
-
-void aibofobia(const string &palabra){
+void palidromo(const string &palabra){
 	int N = palabra.size();
 	Matriz<int> tabla(N + 1, N + 1, 0);
 
@@ -34,52 +30,49 @@ void aibofobia(const string &palabra){
 		}
 	}
 
-	string aux = "", pal = "";
-	int valor = tabla[1][N];
+	int letras = tabla[1][N];
+	int total = N + letras;
+	string final(total,' ');
+	int i = 0, k = 0, j = N - 1, t = total - 1;
 
-	if (tabla[1][N] > 0){
-		int pos = 0;
-
-		for (int i = N; i >= 1; i--){
-			if (tabla[1][i] > tabla[1][i - 1] && valor == tabla[1][i]){
-				aux += palabra[i - 1];
-				valor--;
-			}
-			else if (tabla[1][i] < tabla[1][i - 1] && valor != 0){
-				pos = i;
-			}
-		}
-
-		if (pos == 0){
-			pal = aux + palabra;
+	while (total>0){
+		if (total == 1){
+			final[t] = palabra[i];
+			total--;
+		}else if (palabra[i] == palabra[j]){
+			final[k] = final[t] = palabra[j];
+			i++; k++; t--; j--;
+			total -= 2;
 		}
 		else{
-			for (int i = 0; i < N; i++){
-				if (i == pos - 1){
-					pal += palabra[i] + aux;
-				}
-				else{
-					pal += palabra[i];
-				}
+			if (tabla[i + 1][j] < tabla[i][j - 1]){
+				final[k] = final[t] = palabra[j];
+				k++; t--; j--;
 			}
+			else{
+				final[k] = final[t] = palabra[i];
+				i++; k++; t--;
+			}
+			total -= 2;
 		}
-	}
-	else{
-		pal = palabra;
-
+		
+		
 	}
 
-	cout << tabla[1][N] << " " << pal << "\n";
+	final.substr(0, ' ');
+
+	cout << letras <<" " << final <<"\n";
 }
+
 bool resuelveCaso() {
-	string p;
+	string palabra;
 
-	cin >> p;
+	cin >> palabra;
 
-	if (!std::cin)  // fin de la entrada
+	if (!cin)
 		return false;
 
-	aibofobia(p);
+	palidromo(palabra);
 
 	return true;
 }
@@ -92,6 +85,7 @@ int main() {
 #endif
 
 	while (resuelveCaso());
+
 
 	// para dejar todo como estaba al principio
 #ifndef DOMJUDGE
